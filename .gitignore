@@ -1,3 +1,7 @@
 tools
 .vscode
 .DS_Store
+
+/*.out
+pahcer_config.toml
+pahcer
