@@ -3,27 +3,13 @@
 using namespace std;
 double rand01();
 unsigned int randxor();
+void printone(int p, int r, int d, int b) { cout<<p<<" "<<r<<" "<<(d==0?'U':'L')<<" "<<b<<endl; }
 struct Rect {
     long h, w;
     Rect(long h, long w) : h(h), w(w) {}
 };
 vector<Rect> R;
 int N, T, sigma;
-
-void solve() {
-    cout<<N<<endl;
-    for(int i=0; i<N; i++) {
-        char d = rand01() >= 0.5 ? 'U' : 'L';
-        int r = i == 0 ? -1 : (int)(randxor() % i);
-        cout<<i<<" "<<0<<" "<<d<<" "<<r<<endl;
-    }
-    // time keeping
-    //  auto start = chrono::system_clock::now();
-    //  while (chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - start).count() < 100)
-    //  {
-    //      break;
-    //  }
-}
 int main()
 {
     cin.tie(nullptr);
@@ -42,8 +28,22 @@ int main()
 
     int Tp = T;
     long resh, resw;
+    int sn = (int)sqrt(N);
     while(Tp--) {
-        solve();
+        int W = sn - 2 + (Tp % 7);
+        if(W <= 0) W = 1;
+        int cnt = 0;
+        cout<<N<<endl;
+        while(true) {
+            for(int i=0; i<W; i++) {
+                int r = randxor() % 2 == 0 ? 0 : 1;
+                if(i==0) printone(cnt, r, 1, -1);
+                else printone(cnt, r, 1, cnt-1);
+                cnt++;
+                if(cnt == N) break;
+            }
+            if(cnt == N) break;
+        }
         cin>>resh>>resw;
     }
 }

@@ -4,3 +4,7 @@ unsigned int randxor()
     unsigned int t;
     t=(x^(x<<11));x=y;y=z;z=w; return( w=(w^(w>>19))^(t^(t>>8)) );
 }
+
+double rand01() {
+    return randoxor() / UINT_MAX;
+}

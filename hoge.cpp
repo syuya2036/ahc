@@ -13,8 +13,8 @@ int N, T, sigma;
 void solve() {
     cout<<N<<endl;
     for(int i=0; i<N; i++) {
-        char d = rand01() >= 0.5 ? 'U' : 'L';
-        int r = i == 0 ? -1 : (int)(randxor() % i);
+        char d = 'L';
+        int r = -1;
         cout<<i<<" "<<0<<" "<<d<<" "<<r<<endl;
     }
     // time keeping
@@ -58,3 +58,4 @@ unsigned int randxor()
 double rand01() {
     return (double)randxor() / UINT_MAX;
 }
+
