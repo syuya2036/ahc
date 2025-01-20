@@ -16,9 +16,9 @@ int main()
 
     // time keeping
     auto start = chrono::system_clock::now();
-    while (chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - start).count() < 100)
+    while (chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now() - start).count() < 1900)
     {
-        break;
+        continue;
     }
 
     cout<<4<<endl;
