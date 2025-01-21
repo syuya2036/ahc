@@ -165,9 +165,9 @@ int main()
     vector<int> bestOrder = order;
     vector<vector<int>> bestG_desc = G_desc;
 
-    double timeLimit = 1.97;
+    double timeLimit = 100.97;
     double startTime = nowSec();
-    double T0 = 3e3;
+    double T0 = 3e6;
     double T1 = 10;
 
     random_device rd;
@@ -199,7 +199,7 @@ int main()
         {
             int i = randNode(mt), j = randNode(mt);
             long long dist = (long long)(X[i]-X[j])*(X[i]-X[j])+(Y[i]-Y[j])*(Y[i]-Y[j]);
-            if(dist > 500) continue;
+            if(dist > 25000) continue;
             if (i != j)
             {
                 swap(order[i], order[j]);
@@ -249,7 +249,7 @@ int main()
             {
                 double prob = exp(double(d) / T);
                 double r = rand01(mt);
-                if (r > prob)
+                if (r < prob)
                 {
                     revertFlag = true;
                 }
